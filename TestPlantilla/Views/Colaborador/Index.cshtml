@@ -1,0 +1,69 @@
+﻿@model TestPlantilla.Models.ColaboradorView
+@{
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h3 class="title-5 m-b-35" style="margin-top: 1em;">Gestión de colaboradores</h3>
+        </div>
+        <div class="col">
+            <a class="btn btn-success float-right" href="#" style="margin-top: 1em; color: white;">
+                <i class="fas fa-plus"></i>&nbsp;&nbsp;Agregar colaborador
+            </a>
+        </div>            
+    </div>
+    
+    <table id="tablaColaborador" class="table table-bordered table-striped tablecontainer" style="width: 100%">
+        <thead>
+            <tr>
+                <th>R.U.N.</th>
+                <th>R.U.T.</th>
+                <th>Nombre</th>
+                <th>A. Paterno</th>
+                <th>A. Materno</th>
+                <th>Edad</th>
+                <th>Cargo</th>
+                <th>Teléfono</th>
+                <th>Valor H/E</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+}
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            var oTable = $('#tablaColaborador').DataTable({
+                "ajax": {
+                    "url": '/Colaborador/GetColaboradores',
+                    "type": "get",
+                    "datatype": "json"
+                },
+                "columns": [
+                    { "data": "run" },
+                    { "data": "rut" },
+                    { "data": "nombre" },
+                    { "data": "apellidoPaterno" },
+                    { "data": "apellidoMaterno" },
+                    { "data": "edad" },
+                    { "data": "cargo" },
+                    { "data": "telefono" },
+                    { "data": "valorHoraExtra" },
+                    {
+                        "data": "run", "render": function (data) {
+                            return '<a class="btn btn-success popup" href="#"><i class="fas fa-edit"></i></a>';
+                        }
+                    },
+                    {
+                        "data": "run", "render": function (data) {
+                            return '<a class="btn btn-danger popup" href="#"><i class="fas fa-trash"></i></a>';
+                        }
+                    }
+                ]
+            })
+        })
+    </script>    
+}

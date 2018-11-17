@@ -1,0 +1,41 @@
+﻿@model TestPlantilla.Models.ColaboradorView
+<h2>Save</h2>
+@using (Html.BeginForm("Eliminar", "Colaborador", FormMethod.Post, new { id = "popupForm" }))
+{
+        @Html.HiddenFor(c => c.run)
+
+    <div class="form-group">
+        <label>R.U.T.</label>
+        <p>@Model.rut</p>
+    </div>
+    <div class="form-group">
+        <label>Nombre</label>
+        <p>@Model.nombre</p>
+    </div>
+    <div class="form-group">
+        <label>A. Paterno</label>
+        <p>@Model.apellidoPaterno</p>
+    </div>
+    <div class="form-group">
+        <label>A. Materno</label>
+        <p>@Model.apellidoMaterno</p>
+    </div>
+    <div class="form-group">
+        <label>Edad</label>
+        <p>@Model.edad</p>
+    </div>
+    <div class="form-group">
+        <label>Cargo</label>
+        <p>@Model.cargo</p>
+    </div>
+    <div class="form-group">
+        <label>Teléfono</label>
+        <p>@Model.telefono</p>
+    </div>
+    <div class="form-group">
+        <label>Valor H/E</label>
+        <p>@Model.valorHoraExtra</p>
+    </div>
+    <div>
+        <input type="submit" value="Guardar" />
+    </div>
